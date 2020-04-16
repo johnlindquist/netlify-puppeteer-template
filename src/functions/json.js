@@ -13,8 +13,9 @@ exports.handler = async (event, context) => {
     const browser = await chromium.puppeteer.launch({
         args: chromium.args,
         defaultViewport: chromium.defaultViewport,
-        executablePath: await chromium.executablePath,
+        executablePath: process.env.NETLIFY_DEV ? null : await chromium.executablePath,
         headless: chromium.headless,
+        ignoreHTTPSErrors: true
     });
 
     const page = await browser.newPage();
@@ -23,9 +24,9 @@ exports.handler = async (event, context) => {
 
     let html = await page.evaluate(() => document.body.innerHTML)
     let json = await htmlToJson.parse(html, {
-        'text': function ($doc) {
-            return $doc.find('div').text();
-        }
+        'images': ['img', function ($img) {
+            return $img.attr('src');
+        }]
     }, function (err, result) {
         console.log(result);
     });
