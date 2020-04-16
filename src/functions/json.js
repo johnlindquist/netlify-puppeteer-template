@@ -3,11 +3,14 @@ let htmlToJson = require('html-to-json');
 
 exports.handler = async (event, context) => {
 
-    const url = JSON.parse(event.body).url;
+    let url = "https://github.com"
 
-    if (!url) return {
-        statusCode: 400,
-        body: JSON.stringify({ message: 'Page URL not defined' })
+    if (event.httpMethod == "GET") {
+        url = event.queryStringParameters.url || url
+    }
+
+    if (event.httpMethod == "POST") {
+        url = JSON.parse(event.body).url || url
     }
 
     const browser = await chromium.puppeteer.launch({
