@@ -1,0 +1,25 @@
+{
+  "name": "netlify-stream-chat-token",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:johnlindquist/netlify-stream-chat-token.git",
+  "author": "johnlindquist <johnlindquist@Johns-MacBook-Pro.local>",
+  "license": "MIT",
+  "dependencies": {
+    "chrome-aws-lambda": "^2.1.1",
+    "html-to-json": "^0.6.0",
+    "netlify-lambda": "^1.6.3",
+    "project-name-generator": "^2.1.7",
+    "puppeteer-core": "^3.0.0"
+  },
+  "scripts": {
+    "start": "netlify-lambda serve src/lambda --config webpack.functions.js",
+    "build": "netlify-lambda build src/functions --config webpack.functions.js",
+    "postinstall": "netlify-lambda install"
+  },
+  "devDependencies": {
+    "babel-loader": "^8.1.0",
+    "puppeteer": "^3.0.0",
+    "webpack-node-externals": "^1.7.2"
+  }
+}
