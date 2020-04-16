@@ -16,7 +16,8 @@
   "scripts": {
     "start": "netlify-lambda serve src/lambda --config webpack.functions.js",
     "build": "netlify-lambda build src/functions --config webpack.functions.js",
-    "postinstall": "netlify-lambda install"
+    "postinstall": "netlify-lambda install",
+    "dev": "netlify dev"
   },
   "devDependencies": {
     "babel-loader": "^8.1.0",
