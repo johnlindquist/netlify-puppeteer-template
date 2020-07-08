@@ -14,7 +14,7 @@
     "utf-8-validate": "^5.0.2"
   },
   "scripts": {
-    "start": "netlify-lambda serve src/lambda --config webpack.functions.js",
+    "start": "netlify-lambda serve src/functions --config webpack.functions.js",
     "build": "netlify-lambda build src/functions --config webpack.functions.js",
     "postinstall": "netlify-lambda install",
     "dev": "netlify dev"
